@@ -1,0 +1,14 @@
+# The emojee service provides a load-balancing proxy over the emojee
+# pods. By specifying the type as a 'LoadBalancer', Kubernetes Engine will
+# create an external HTTP load balancer.
+apiVersion: v1
+kind: Service
+metadata:
+  name: emojee
+spec:
+  type: LoadBalancer
+  selector:
+    app: emojee
+  ports:
+  - port: 80
+    targetPort: 8080
